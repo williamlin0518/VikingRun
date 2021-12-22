@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,17 +12,20 @@ public class TileDestroy : MonoBehaviour
         
     }
 
+    public GameObject player;
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (
-            
-            (int) transform.position.z ==(int) GameStatic.CharGameObject.transform.position.z
-            
-            )
-        {
-            GameStatic.spawn.DecreaseTile();
-            Destroy(gameObject);
-        }
+        // if (
+        //     
+        //     Math.Abs( transform.position.z -GameStatic.CharGameObject.transform.position.z)<10&&
+        //     Math.Abs( transform.position.z -GameStatic.CharGameObject.transform.position.z)<10
+        //     
+        //     )
+        // {
+        
+        GameStatic.spawn.DecreaseTile();
+        Destroy(gameObject,5);
+        
     }
 }

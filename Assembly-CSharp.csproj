@@ -57,10 +57,10 @@
      <Compile Include="Assets\Scripts\GameStatic.cs" />
      <Compile Include="Assets\Scripts\playerMove.cs" />
      <Compile Include="Assets\Scripts\NewplayerMove.cs" />
+     <Compile Include="Assets\Rocks and Boulders 2\Shaders\RotateGameObject.cs" />
      <Compile Include="Assets\Scripts\Camera.cs" />
      <Compile Include="Assets\Scripts\Spawn.cs" />
      <Compile Include="Assets\Scripts\ObstacleCollide.cs" />
-     <Compile Include="Assets\Rocks and Boulders 2\Shaders\RotateGameObject.cs" />
      <None Include="Assets\Rocks and Boulders 2\Shaders\Blend SM2.shader" />
      <None Include="Assets\Toby Fredson\Rocky Hills Environment - Light Pack\Legacy Project\Legacy Project_Read Me!.txt" />
      <None Include="Assets\Rocks and Boulders 2\Shaders\Blend SM3.shader" />

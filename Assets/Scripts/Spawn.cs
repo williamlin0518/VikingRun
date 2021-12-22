@@ -14,6 +14,7 @@ public class Spawn : MonoBehaviour
     public GameObject referenceObject;   //this 
 
     public float distanceBetweenTile = 4.0f;
+    public float distanceBetweenTurn = 4.0f;
 
     
     private Vector3 prevTilePos;
@@ -28,8 +29,8 @@ public class Spawn : MonoBehaviour
 
     public int maxTileAmount = 5;
     private int thisTileAmount = 0;
-
-    
+    private int rotationAngle=90;
+    private float limit = 0.15f;
     private Vector3 newSpawnPos;
 
     private GameObject temp;
@@ -59,35 +60,46 @@ public class Spawn : MonoBehaviour
         
         
         float randomValue = Random.value;
-        if (randomValue < 1&&randomValue>0.4)
+        if (randomValue <= 1&&randomValue>=0.3)
         {
             direction = mainDirection;                   // straight
             newSpawnPos = prevTilePos + distanceBetweenTile * direction;    //new pos
             Transform spawnPoint = referenceObject.transform.GetChild(0 );
-            temp=Instantiate(tilePrefab,spawnPoint.position, Quaternion.Euler(0, 90, 0));
+            temp=Instantiate(tilePrefab,spawnPoint.position, Quaternion.Euler(0, rotationAngle, 0));
         }
-        else if(randomValue>0.2)
+        else if(randomValue>limit)
         {
+            if (limit < 0.25)
+            {
+                limit += 0.03f;
+            }
             //Vector3 tmp = direction;                    //right
             //direction = otherDirection;
             //mainDirection = direction;
             //otherDirection = tmp;
-            direction = mainDirection; 
+            direction = Quaternion.Euler(0, 90, 0) * direction;
+            //direction = mainDirection; 
             
-            newSpawnPos = prevTilePos + distanceBetweenTile * direction;    //new pos
-            Transform spawnPoint = referenceObject.transform.GetChild(0 );
-            temp=Instantiate(tilePrefabRight,spawnPoint.position, Quaternion.Euler(0, 180, 0));
+            newSpawnPos = prevTilePos + distanceBetweenTurn * direction;    //new pos
+            Transform spawnPoint = referenceObject.transform.GetChild(1 );
+            rotationAngle += 90;
+            temp=Instantiate(tilePrefabRight,spawnPoint.position, Quaternion.Euler(0, rotationAngle, 0));
         }
         else
         {
+            if (limit > 0.1f)
+            {
+                limit -= 0.03f;
+            }
             // Vector3 tmp = direction;                    //left
             // direction = otherDirection;
             // mainDirection = direction;
             // otherDirection = tmp;
             direction = mainDirection; 
-            newSpawnPos = prevTilePos + distanceBetweenTile * direction;    //new pos
-            Transform spawnPoint = referenceObject.transform.GetChild(0 );
-            temp=Instantiate(tilePrefabLeft,spawnPoint.position, Quaternion.Euler(0, 90, 0));
+            newSpawnPos = prevTilePos + distanceBetweenTurn * direction;    //new pos
+            Transform spawnPoint = referenceObject.transform.GetChild(2 );
+            rotationAngle -= 90;
+            temp=Instantiate(tilePrefabLeft,spawnPoint.position, Quaternion.Euler(0, rotationAngle, 0));
         }
 
         // Vector3 newSpawnPos = prevTilePos + distanceBetweenTile * direction;    //new pos

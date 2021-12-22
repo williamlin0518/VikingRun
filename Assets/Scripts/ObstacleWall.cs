@@ -15,22 +15,22 @@ public class ObstacleWall : MonoBehaviour
         float a = Random.value;
         if (a< 0.2)
         {
-            Transform spawnPoint = transform.GetChild(1);
+            Transform spawnPoint = transform.GetChild(Random.Range(3,9));
             
             //Destroy(obstacleWa);
             Instantiate(obstacleWall, spawnPoint.position, Quaternion.identity, transform);
 
         }
-        else if (a > 0.2 && a < 0.3)
+        else if (a > 0.2 && a < 0.4)
         {
-            Transform spawnPoint = transform.GetChild(2);
+            Transform spawnPoint = transform.GetChild(Random.Range(3,9));
             
             //Destroy(obstacleWa);
             Instantiate(obstacleRoBlue, spawnPoint.position, Quaternion.identity, transform);
         }
-        else if (a > 0.3 && a < 0.4)
+        else if (a > 0.4 && a < 0.6)
         {
-            Transform spawnPoint = transform.GetChild(2);
+            Transform spawnPoint = transform.GetChild(Random.Range(3,9));
             
             //Destroy(obstacleWa);
             Instantiate(obstacleRoGreen, spawnPoint.position, Quaternion.identity, transform);

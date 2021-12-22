@@ -37,7 +37,7 @@ public class playerMove : MonoBehaviour
         bool isWalking = hasHorizontalInput || hasVerticalInput;
         m_Animator.SetBool ("isWalking", isWalking);
         if (!alive) return;
-        if (transform.position.y < -10)
+        if (transform.position.y < 10)
         {
             Die();
         }
