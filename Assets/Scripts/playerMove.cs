@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 public class playerMove : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    private Vector3 velocity=new Vector3(0,-1,0);
     [SerializeField] private float jumpforce = 7.0f;
     [SerializeField] private float gravity = -9.8f;
     [SerializeField] private float Speed = 7.0f;
     private bool turnLeft = false;
     private bool turnRight = false;
     private bool alive = true;
+    private bool onAir = false;
     private CharacterController charCtrl;
     Animator m_Animator;
     void Start()
@@ -54,13 +55,17 @@ public class playerMove : MonoBehaviour
 
         if (Input.GetKeyDown("space"))
         {
+            //Jump();
+            
             m_Animator.SetBool("jump",true);
+            //charCtrl.Move(transform.up * Speed *5* Time.deltaTime);
+            Drop();
         }
         else if (Input.GetKeyDown("s"))
         {
             m_Animator.SetBool("slide",true);
         }
-
+        
         charCtrl.SimpleMove(new Vector3(0, 0, 0));
         charCtrl.Move(transform.forward * Speed * Time.deltaTime);
     }
@@ -74,5 +79,45 @@ public class playerMove : MonoBehaviour
     void cancelMove(string AniName)
     {
         m_Animator.SetBool(AniName,false);
+    }
+
+    private void Jump()
+    {
+        
+        
+        
+        // if (charCtrl.isGrounded)
+        // {
+        //     
+        //     charCtrl.Move(velocity * Time.deltaTime);
+        //     velocity.y = jumpforce*25;
+        //    
+        //     
+        // }
+        // else
+        // {
+        //     velocity.y -= gravity * -2f * Time.deltaTime;
+        // }
+        onAir = true;
+        charCtrl.Move(transform.up * Speed *3* Time.deltaTime);
+        //charCtrl.Move(velocity * Time.deltaTime);
+    }
+
+    private void Drop()
+    {
+        velocity.y = 0;
+        if (charCtrl.isGrounded)
+        {
+            
+            // charCtrl.Move(velocity * Time.deltaTime);
+            // velocity.y = jumpforce*25;
+            //
+            
+        }
+        else
+        {
+            velocity.y -= gravity * -2f * Time.deltaTime;
+            charCtrl.Move(velocity * Time.deltaTime);
+        }
     }
 }
