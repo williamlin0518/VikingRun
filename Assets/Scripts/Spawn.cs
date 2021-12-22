@@ -8,32 +8,32 @@ public class Spawn : MonoBehaviour
 {
     // Start is called before the first frame update
 
-
-
+    public GameObject tilePrefabRight;
+    public GameObject tilePrefabLeft;
     public GameObject tilePrefab;
     public GameObject referenceObject;   //this 
 
     public float distanceBetweenTile = 4.0f;
 
-    //public float timeOffset = 4.0f;
-    public float randomValue = 0.8f;
-
+    
     private Vector3 prevTilePos;
-    //private float startTime;
+    
 
     private Vector3 direction = new Vector3(0, 0, 1);
     private Vector3 mainDirection = new Vector3(0, 0, 1);
 
-    private Vector3 otherDirection = new Vector3(1, 0, 1);
+    private Vector3 otherDirection = new Vector3(1, 0, 0);
+    //private Vector3 leftDirection = new Vector3(-1, 0, 0);
 
 
     public int maxTileAmount = 5;
-
     private int thisTileAmount = 0;
 
+    
+    private Vector3 newSpawnPos;
 
-
-    public GameObject obstacleWall;
+    private GameObject temp;
+    
     void Start()
     {
         prevTilePos = referenceObject.transform.position;
@@ -54,28 +54,55 @@ public class Spawn : MonoBehaviour
         {
             return;
         }
-        //if (Time.time - startTime > timeOffset) return;
-
-        if (Random.value < randomValue)
+        
+        
+        
+        
+        float randomValue = Random.value;
+        if (randomValue < 1&&randomValue>0.4)
         {
-            direction = mainDirection;
+            direction = mainDirection;                   // straight
+            newSpawnPos = prevTilePos + distanceBetweenTile * direction;    //new pos
+            Transform spawnPoint = referenceObject.transform.GetChild(0 );
+            temp=Instantiate(tilePrefab,spawnPoint.position, Quaternion.Euler(0, 90, 0));
+        }
+        else if(randomValue>0.2)
+        {
+            //Vector3 tmp = direction;                    //right
+            //direction = otherDirection;
+            //mainDirection = direction;
+            //otherDirection = tmp;
+            direction = mainDirection; 
+            
+            newSpawnPos = prevTilePos + distanceBetweenTile * direction;    //new pos
+            Transform spawnPoint = referenceObject.transform.GetChild(0 );
+            temp=Instantiate(tilePrefabRight,spawnPoint.position, Quaternion.Euler(0, 180, 0));
         }
         else
         {
-            Vector3 tmp = direction;
-            direction = otherDirection;
-            mainDirection = direction;
-            otherDirection = tmp;
+            // Vector3 tmp = direction;                    //left
+            // direction = otherDirection;
+            // mainDirection = direction;
+            // otherDirection = tmp;
+            direction = mainDirection; 
+            newSpawnPos = prevTilePos + distanceBetweenTile * direction;    //new pos
+            Transform spawnPoint = referenceObject.transform.GetChild(0 );
+            temp=Instantiate(tilePrefabLeft,spawnPoint.position, Quaternion.Euler(0, 90, 0));
         }
 
-        Vector3 newSpawnPos = prevTilePos + distanceBetweenTile * direction;    //new pos
-        Transform spawnPoint = referenceObject.transform.GetChild(0 );
-        GameObject temp=Instantiate(tilePrefab,spawnPoint.position, Quaternion.Euler(0, 90, 0));
+        // Vector3 newSpawnPos = prevTilePos + distanceBetweenTile * direction;    //new pos
+        // Transform spawnPoint = referenceObject.transform.GetChild(0 );
+        // GameObject temp=Instantiate(tilePrefab,spawnPoint.position, Quaternion.Euler(0, 90, 0));
         prevTilePos = newSpawnPos;
         referenceObject = temp;
         thisTileAmount++;
 
 
+    }
+
+    public void ProduceSpawn()
+    {
+        
     }
 
     public void DecreaseTile()
