@@ -76,7 +76,8 @@ public class playerMove : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Destroy(other.gameObject,3);
-        GameStatic.spawn.DecreaseTile();
+        //GameStatic.spawn.DecreaseTile();
+        GameStatic.spawn.thisTileAmount-=1;
     }
     public void Die()
     {

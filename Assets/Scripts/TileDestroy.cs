@@ -27,19 +27,20 @@ public class TileDestroy : MonoBehaviour
         //     Destroy(gameObject,3);
         // }
         
-        if (
-            Math.Abs(transform.position.z - GameStatic.CharGameObject.transform.position.z) < 90 &&
-            Math.Abs(transform.position.x - GameStatic.CharGameObject.transform.position.x) < 90
-        )
-        {
-            
-           deleteSpawn();
-        }
+        // if (
+        //     Math.Abs(transform.position.z - GameStatic.CharGameObject.transform.position.z) < 90 &&
+        //     Math.Abs(transform.position.x - GameStatic.CharGameObject.transform.position.x) < 90
+        // )
+        // {
+        //     
+        //    deleteSpawn();
+        // }
     }
 
     void deleteSpawn()
     {
         GameStatic.spawn.DecreaseTile();
+        //GameStatic.spawn.thisTileAmount-=1;
         Destroy(gameObject,4);
     }
 }

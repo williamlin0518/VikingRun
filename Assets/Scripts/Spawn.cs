@@ -28,7 +28,7 @@ public class Spawn : MonoBehaviour
 
 
     public int maxTileAmount = 5;
-    private int thisTileAmount = 0;
+    public int thisTileAmount = 0;
     private int rotationAngle=90;
     private float limit = 0.15f;
     private Vector3 newSpawnPos;
@@ -49,7 +49,7 @@ public class Spawn : MonoBehaviour
     // Update is called once per frame
 
 
-    void Update()
+    void FixedUpdate()
     {
         float randomValue = Random.value;
         if (thisTileAmount > maxTileAmount)
@@ -91,10 +91,8 @@ public class Spawn : MonoBehaviour
             {
                 limit -= 0.03f;
             }
-            // Vector3 tmp = direction;                    //left
-            // direction = otherDirection;
-            // mainDirection = direction;
-            // otherDirection = tmp;
+           
+            
             direction = mainDirection; 
             newSpawnPos = prevTilePos + distanceBetweenTurn * direction;    //new pos
             Transform spawnPoint = referenceObject.transform.GetChild(2 );
@@ -102,15 +100,8 @@ public class Spawn : MonoBehaviour
             temp=Instantiate(tilePrefabLeft,spawnPoint.position, Quaternion.Euler(0, rotationAngle, 0));
             thisTileAmount++;
         }
-
-        // Vector3 newSpawnPos = prevTilePos + distanceBetweenTile * direction;    //new pos
-        // Transform spawnPoint = referenceObject.transform.GetChild(0 );
-        // GameObject temp=Instantiate(tilePrefab,spawnPoint.position, Quaternion.Euler(0, 90, 0));
         prevTilePos = newSpawnPos;
         referenceObject = temp;
-        
-
-
     }
 
     public void ProduceSpawn()
