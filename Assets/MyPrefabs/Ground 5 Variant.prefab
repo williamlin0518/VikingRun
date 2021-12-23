@@ -7,9 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9217959184139000753, guid: 5906a9968cc7148c5ab4688fcc179981, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2823470527410841244, guid: 5906a9968cc7148c5ab4688fcc179981, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5118057060861309030, guid: 5906a9968cc7148c5ab4688fcc179981, type: 3}
       propertyPath: m_Name
-      value: Ground 5
+      value: Ground 5 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5119262075019729742, guid: 5906a9968cc7148c5ab4688fcc179981, type: 3}
       propertyPath: m_RootOrder

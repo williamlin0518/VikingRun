@@ -19,12 +19,14 @@ public class playerMove : MonoBehaviour
     {
         charCtrl = GetComponent<CharacterController>();
         m_Animator = GetComponent<Animator> ();
+        GameStatic.CharGameObject = gameObject;
     }
 
     // Update is called once per frame
     
     private void Awake()
     {
+        TileDestroy.player = GetComponent<Transform>();
         GameStatic.CharGameObject = gameObject;
         m_Animator = GetComponent<Animator> ();
     }
@@ -70,6 +72,12 @@ public class playerMove : MonoBehaviour
         charCtrl.Move(transform.forward * Speed * Time.deltaTime);
     }
 
+    
+    void OnTriggerEnter(Collider other)
+    {
+        Destroy(other.gameObject,3);
+        GameStatic.spawn.DecreaseTile();
+    }
     public void Die()
     {
         alive = false;
