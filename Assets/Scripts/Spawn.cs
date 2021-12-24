@@ -27,8 +27,8 @@ public class Spawn : MonoBehaviour
     //private Vector3 leftDirection = new Vector3(-1, 0, 0);
 
 
-    public int maxTileAmount = 5;
-    public int thisTileAmount = 0;
+    private int maxTileAmount = 8;
+    public static int thisTileAmount = 0;
     private int rotationAngle=90;
     private float limit = 0.15f;
     private Vector3 newSpawnPos;
@@ -44,12 +44,19 @@ public class Spawn : MonoBehaviour
 
     private void Awake()
     {
-        GameStatic.spawn = this;
+        //GameStatic.spawn = this;
     }
     // Update is called once per frame
+    private void Update()
+    {
+        if (thisTileAmount < maxTileAmount)
+        {
+            pro();
+        }
+        
+    }
 
-
-    void FixedUpdate()
+    public  void pro()
     {
         float randomValue = Random.value;
         if (thisTileAmount > maxTileAmount)
@@ -100,8 +107,11 @@ public class Spawn : MonoBehaviour
             temp=Instantiate(tilePrefabLeft,spawnPoint.position, Quaternion.Euler(0, rotationAngle, 0));
             thisTileAmount++;
         }
+        
+        
         prevTilePos = newSpawnPos;
         referenceObject = temp;
+        thisTileAmount++;
     }
 
     public void ProduceSpawn()
@@ -111,7 +121,7 @@ public class Spawn : MonoBehaviour
 
     public void DecreaseTile()
     {
-        thisTileAmount--;
+        //thisTileAmount--;
     }
 
     void SpawnObstacle()

@@ -13,8 +13,11 @@ public class playerMove : MonoBehaviour
     private bool turnRight = false;
     private bool alive = true;
     private bool onAir = false;
+    private bool canStart = false;
     private CharacterController charCtrl;
     Animator m_Animator;
+    public Animator e_Animator;
+    public GameObject enemy;
     void Start()
     {
         charCtrl = GetComponent<CharacterController>();
@@ -26,9 +29,9 @@ public class playerMove : MonoBehaviour
     
     private void Awake()
     {
-        TileDestroy.player = GetComponent<Transform>();
-        GameStatic.CharGameObject = gameObject;
-        m_Animator = GetComponent<Animator> ();
+        //TileDestroy.player = GetComponent<Transform>();
+        //GameStatic.CharGameObject = gameObject;
+        //m_Animator = GetComponent<Animator> ();
     }
     void Update()
     {
@@ -46,6 +49,11 @@ public class playerMove : MonoBehaviour
         turnLeft = Input.GetKeyDown(KeyCode.A);
         turnRight = Input.GetKeyDown(KeyCode.D);
 
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            m_Animator.SetBool("start",true);
+            canStart = true;
+        }
         if (turnLeft)
         {
             transform.Rotate(new Vector3(0, -90f, 0));
@@ -68,21 +76,42 @@ public class playerMove : MonoBehaviour
             m_Animator.SetBool("slide",true);
         }
         
+        
         charCtrl.SimpleMove(new Vector3(0, 0, 0));
-        charCtrl.Move(transform.forward * Speed * Time.deltaTime);
+
+        if (canStart)
+        {
+            charCtrl.Move(transform.forward * Speed * Time.deltaTime);
+        }
+        
     }
 
     
-    void OnTriggerEnter(Collider other)
+    void OnTriggerExit(Collider other)
     {
+        
         Destroy(other.gameObject,3);
         //GameStatic.spawn.DecreaseTile();
-        GameStatic.spawn.thisTileAmount-=1;
+        //GameStatic.spawn.thisTileAmount-=1;
+        Spawn.thisTileAmount -= 1;
+        
     }
     public void Die()
     {
         alive = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    void OnCollisionEnter(Collision col){
+        if (col.gameObject.tag == "obstacle")
+        {
+            e_Animator.SetBool("canAttack",true);
+            
+            m_Animator.SetBool("end",true);
+            canStart = false;
+            enemy.transform.position = transform.position-new Vector3(1,0,1);
+            e_Animator.SetBool("canAttack",true);
+        }
+           
     }
 
     void cancelMove(string AniName)
@@ -108,7 +137,7 @@ public class playerMove : MonoBehaviour
         //     velocity.y -= gravity * -2f * Time.deltaTime;
         // }
         onAir = true;
-        charCtrl.Move(transform.up * Speed *3* Time.deltaTime);
+        charCtrl.Move(transform.up * Speed *4* Time.deltaTime);
         //charCtrl.Move(velocity * Time.deltaTime);
     }
 
