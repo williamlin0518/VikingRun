@@ -64,7 +64,7 @@
      <Compile Include="Assets\Scripts\ObstacleCollide.cs" />
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
-     <Compile Include="Assets\deathMenu.cs" />
+     <Compile Include="Assets\Scripts\endGame.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Rocks and Boulders 2\Shaders\Blend SM2.shader" />

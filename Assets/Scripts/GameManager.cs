@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager inst;
 
     public Text scoreText;
+    public Text finalScore;
     private void Awake()
     {
         inst = this;
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     {
         score++;
         scoreText.text = "Score: " + score;
+        finalScore.text = "Score: " + score;
     }
     void Start()
     {

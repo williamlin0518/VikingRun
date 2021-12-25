@@ -18,6 +18,7 @@ public class playerMove : MonoBehaviour
     Animator m_Animator;
     public Animator e_Animator;
     public GameObject enemy;
+    public GameObject deathUI;
     void Start()
     {
         charCtrl = GetComponent<CharacterController>();
@@ -104,7 +105,10 @@ public class playerMove : MonoBehaviour
     public void Die()
     {
         alive = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        deathUI.SetActive(true);
+        Time.timeScale = 0f;
+        
     }
     void OnCollisionEnter(Collision col){
         if (col.gameObject.tag == "obstacle")
