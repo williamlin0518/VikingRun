@@ -6,7 +6,7 @@ press Enter to start
 ![Alt text](Assets/2.png)
 
 
-Wath out of thsoe obstacles,or.........
+Watch out of thsoe obstacles,or.........
 
 
 ![Alt text](Assets/1.png)
