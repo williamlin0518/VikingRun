@@ -63,12 +63,17 @@ public class playerMove : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("space")&&!m_Animator.GetBool("jump"))
         {
             //Jump();
+            if (!m_Animator.GetBool("jump"))
+            {
+                m_Animator.SetBool("jump",true);
+                //charCtrl.Move(transform.up * Speed *5* Time.deltaTime);
+                //Drop();
+            }
             
-            m_Animator.SetBool("jump",true);
-            //charCtrl.Move(transform.up * Speed *5* Time.deltaTime);
+            
             Drop();
         }
         else if (Input.GetKeyDown("s"))
@@ -111,6 +116,13 @@ public class playerMove : MonoBehaviour
             enemy.transform.position = transform.position-new Vector3(1,0,1);
             e_Animator.SetBool("canAttack",true);
         }
+
+        if (col.gameObject.tag == "coin")
+        {
+            Debug.Log("lose");
+            Destroy(col.gameObject);
+            GameManager.inst.IncreaseScore();
+        }
            
     }
 
@@ -136,7 +148,8 @@ public class playerMove : MonoBehaviour
         // {
         //     velocity.y -= gravity * -2f * Time.deltaTime;
         // }
-        onAir = true;
+        onAir = false;
+        Debug.Log("jump");
         charCtrl.Move(transform.up * Speed *4* Time.deltaTime);
         //charCtrl.Move(velocity * Time.deltaTime);
     }
@@ -146,11 +159,11 @@ public class playerMove : MonoBehaviour
         velocity.y = 0;
         if (charCtrl.isGrounded)
         {
-            
+            onAir = true;
             // charCtrl.Move(velocity * Time.deltaTime);
             // velocity.y = jumpforce*25;
             //
-            
+
         }
         else
         {

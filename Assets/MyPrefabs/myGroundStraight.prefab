@@ -266,6 +266,7 @@ MonoBehaviour:
   obstacleWall: {fileID: 1000010816656516, guid: ddd082fb4672f6643be6891e17a84358, type: 3}
   obstacleRoBlue: {fileID: 1000010819948620, guid: 7afaeace60251cd4dae84b0f6e7e8804, type: 3}
   obstacleRoGreen: {fileID: 100000, guid: 27bfdb9a40efac94b969eaf77cea92d9, type: 3}
+  coin: {fileID: 3129200342344496425, guid: 3e29573f06c0a7e4fa986fff41de17af, type: 3}
 --- !u!65 &-8313615257119825968
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -277,8 +278,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 86.37966, y: 15.349268, z: 24.009703}
-  m_Center: {x: -79.04908, y: 7.174634, z: 13.49398}
+  m_Size: {x: 106.38819, y: 27.21721, z: 39.95925}
+  m_Center: {x: -83.32535, y: 13.108605, z: 16.43142}
 --- !u!1 &5398180090169567530
 GameObject:
   m_ObjectHideFlags: 0

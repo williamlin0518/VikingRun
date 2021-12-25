@@ -37,7 +37,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4947509775051962, guid: 9f351f91199c0764fafb3db7279cef35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.2
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 4947509775051962, guid: 9f351f91199c0764fafb3db7279cef35, type: 3}
       propertyPath: m_LocalRotation.w
@@ -143,27 +143,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8313615257119825968, guid: 6e0b5d38216054b149a2763406d37508, type: 3}
       propertyPath: m_Size.x
-      value: 97.21362
+      value: 99.504814
       objectReference: {fileID: 0}
     - target: {fileID: -8313615257119825968, guid: 6e0b5d38216054b149a2763406d37508, type: 3}
       propertyPath: m_Size.y
-      value: 10.917717
+      value: 22.051804
       objectReference: {fileID: 0}
     - target: {fileID: -8313615257119825968, guid: 6e0b5d38216054b149a2763406d37508, type: 3}
       propertyPath: m_Size.z
-      value: 26.343819
+      value: 36.065727
       objectReference: {fileID: 0}
     - target: {fileID: -8313615257119825968, guid: 6e0b5d38216054b149a2763406d37508, type: 3}
       propertyPath: m_Center.x
-      value: -83.368744
+      value: -82.22315
       objectReference: {fileID: 0}
     - target: {fileID: -8313615257119825968, guid: 6e0b5d38216054b149a2763406d37508, type: 3}
       propertyPath: m_Center.y
-      value: 4.9588585
+      value: 10.525902
       objectReference: {fileID: 0}
     - target: {fileID: -8313615257119825968, guid: 6e0b5d38216054b149a2763406d37508, type: 3}
       propertyPath: m_Center.z
-      value: 14.661038
+      value: 13.258305
       objectReference: {fileID: 0}
     - target: {fileID: -591531055731887990, guid: 6e0b5d38216054b149a2763406d37508, type: 3}
       propertyPath: obstacleRoBlue

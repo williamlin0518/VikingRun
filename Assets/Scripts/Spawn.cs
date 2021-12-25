@@ -12,6 +12,7 @@ public class Spawn : MonoBehaviour
     public GameObject tilePrefabLeft;
     public GameObject tilePrefab;
     public GameObject referenceObject;   //this 
+    public GameObject coin;
 
     public float distanceBetweenTile = 4.0f;
     public float distanceBetweenTurn = 4.0f;
@@ -27,7 +28,7 @@ public class Spawn : MonoBehaviour
     //private Vector3 leftDirection = new Vector3(-1, 0, 0);
 
 
-    private int maxTileAmount = 8;
+    private int maxTileAmount = 4;
     public static int thisTileAmount = 0;
     private int rotationAngle=90;
     private float limit = 0.15f;
@@ -37,6 +38,8 @@ public class Spawn : MonoBehaviour
     
     void Start()
     {
+        maxTileAmount = 4;
+        thisTileAmount = 0;
         prevTilePos = referenceObject.transform.position;
         //startTime = Time.time;
         SpawnObstacle();
@@ -106,6 +109,9 @@ public class Spawn : MonoBehaviour
             rotationAngle -= 90;
             temp=Instantiate(tilePrefabLeft,spawnPoint.position, Quaternion.Euler(0, rotationAngle, 0));
             thisTileAmount++;
+            
+            //Transform coinSpawnPoint = transform.GetChild(Random.Range(3,6));
+            //Instantiate(coin, coinSpawnPoint.position+new Vector3(0,1,0), Quaternion.Euler(90, rotationAngle, 0), referenceObject.transform);
         }
         
         
